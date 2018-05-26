@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <style>
+        body {
+          width: 100%;
+          padding: 0;
+          margin: 0;
+          text-align: center;
+          font-size: 16px;
+          font-variant: small-caps;
+          font-family: Lucida, Helvetica, sans-serif;
+          font-weight: 500;
+          background-color: #96A8C8;
+        }
+        .button-block {
+          margin: auto;
+          width: 50%;
+        }
+        #ctitle {
+          margin: 10px;
+          font-size: 21px;
+          font-weight: 800;
+        }
+        #middleContainer {
+          width: 780px;
+          margin: 5px auto;
+          padding: 10px auto;
+        }
+        .box {
+          background: white;
+          border-style: solid;
+          border-width: 1.5px;
+          border-color: #071419;
+          border-radius: 12px;
+          -moz-border-radius: 12px;
+        }
+        ul.comicNav {
+          list-style-type: none;
+        }
+        ul.comicNav li {
+          display: inline;
+        }
+        ul.comicNav li a {
+          background-color: #6E7B91;
+          color: #FFF;
+          border: 1.5px solid #333;
+          font-size: 16px;
+          font-weight: 600;
+          padding: 1.5px 12px;
+          margin: 0 4px;
+          text-decoration: none;
+          -webkit-border-radius: 3px;
+          -moz-border-radius: 3px;
+          -webkit-box-shadow: 0 0 5px 0 gray;
+        }
+    </style>
+    </head>
+    <body>
+
+      <div id="middleContainer" class="box">
+        <div id="ctitle">{{ title }}</div>
+        <ul class="comicNav">
+            <li><a href="/1/">|&lt;</a></li>
+            <li>{% if comic_num == 1 %}<a href="#">{% else %}<a href="/{{ comic_prev }}/">{% endif %}&lt; PREV</a>
+            <li><a href="/{{ rand_num }}/">RANDOM</a></li>
+            <li>{% if comic_num == max_comic %}<a href="#">{% else %}<a href="/{{ next_num }}/">{% endif %}NEXT &gt;</a></li>
+            <li><a href="/">&gt;|</a></li>
+        </ul>
+        <img
+            src="{{ img }}"
+            alt="{{ title }}"
+            title="{{ alt }}"
+        />
+        <ul class="comicNav">
+            <li><a href="/1/">|&lt;</a></li>
+            <li>{% if comic_num == 1 %}<a href="#">{% else %}<a href="/{{ comic_prev }}/">{% endif %}&lt; PREV</a>
+            <li><a href="/{{ rand_num }}/">RANDOM</a></li>
+            <li>{% if comic_num == max_comic %}<a href="#">{% else %}<a href="/{{ next_num }}/">{% endif %}NEXT &gt;</a></li>
+            <li><a href="/">&gt;|</a></li>
+        </ul>
+        <div>
+            Permanent link to this comic: https://xkcd.com/{{ comic_num}}/ <br />
+            Image URL (for hotlinking/embedding): {{ img }}
+        </div>
+      </div>
+
+    </body>
+</html>
