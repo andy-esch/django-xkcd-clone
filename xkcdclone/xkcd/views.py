@@ -30,14 +30,15 @@ def get_comic(request, num=MAX_COMIC_NUM):
 
 def xkcdify_response(resp):
     """Turn requests response into template context"""
+    resp_json = resp.json()
     context = {
         'rand_num': random.randint(0, MAX_COMIC_NUM),
-        'comic_prev': resp.json()['num'] - 1,
-        'next_num': resp.json()['num'] + 1,
+        'comic_prev': resp_json['num'] - 1,
+        'next_num': resp_json['num'] + 1,
         'max_comic': MAX_COMIC_NUM,
-        'comic_num': resp.json()['num'],
-        'title': resp.json()['safe_title'],
-        'alt': resp.json()['alt'],
-        'img': resp.json()['img'],
+        'comic_num': resp_json['num'],
+        'title': resp_json['safe_title'],
+        'alt': resp_json['alt'],
+        'img': resp_json['img'],
     }
     return context
