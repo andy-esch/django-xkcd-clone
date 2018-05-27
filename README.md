@@ -21,10 +21,16 @@ $ pipenv -r requirements.txt
 $ pipenv shell
 ```
 
-Start up the server:
+Copy the `secret.json.sample` to `secret.json` and give fill it in with a key:
+
+```bash
+$ cp xkcdclone/xkcdclone/secret.json.sample xkcdclone/xkcdclone/secret.json
+```
+
+Finally, start up the server:
 
 ```bash
 $ python xkcdclone/manage.py runserver
 ```
 
-Open `http://localhost:8000` in your browser.
+Open `http://127.0.0.1:8000` in your browser.
