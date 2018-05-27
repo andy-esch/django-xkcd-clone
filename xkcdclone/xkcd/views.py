@@ -21,7 +21,7 @@ def get_comic(request, num=MAX_COMIC_NUM):
     """Get specific comic. If num is not specified get most recent."""
     if num > MAX_COMIC_NUM:
         num = MAX_COMIC_NUM
-    template = loader.get_template('template.html')
+    template = loader.get_template('xkcd-page.html')
     resp = requests.get(COMIC_ENDPOINT.format(num))
     context = xkcdify_response(resp)
     return HttpResponse(
